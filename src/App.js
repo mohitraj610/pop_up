@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {Button, Modal} from 'react-bootstrap';
+import { useState } from 'react';
 
 function App() {
+
+  const[show,setShow] = useState(false);
+
+  const showModal = () => {
+    setShow(true);
+  }
+
+  const closeModal = () => {
+    setShow(false);
+  }
+
+  setTimeout(()=> {
+    showModal();
+  },2000);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Modal show={show} onHide={closeModal}>
+      <Modal.Header closeButton className="close"><div className='app'>Checkout what you can do in our FREE trial class!</div></Modal.Header>
+      <Modal.Body><video width="465" height="280" muted="false" autoplay="true" loop="true"><source src="https://www.wiingy.com/wp-content/uploads/2022/04/Wiingy-youtube-14sec-1.webm" type="video/mp4" /><source src="https://www.wiingy.com/wp-content/uploads/2022/04/Wiingy-youtube-14sec-1.webm" type="video/ogg" />Your browser does not support the video tag. </video>
+      <div className='animation'><Button>Book A Free Trial</Button></div></Modal.Body>
+      </Modal>
     </div>
   );
 }
